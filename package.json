@@ -4,9 +4,9 @@
   "description": "this is my first react app and I am making a year planner",
   "main": "index.js",
   "scripts": {
-		"build": "webpack",
-		"start:dev":"webpack-dev-server"
-	},
+    "build": "webpack",
+    "start:dev": "webpack-dev-server"
+  },
   "author": "_nova",
   "license": "MIT",
   "devDependencies": {
@@ -14,6 +14,8 @@
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-react": "^7.12.1",
     "babel-loader": "^8.1.0",
+    "css-loader": "^5.0.0",
+    "style-loader": "^2.0.0",
     "webpack": "^4.28.4",
     "webpack-cli": "^3.2.1"
   },
