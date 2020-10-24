@@ -8,7 +8,10 @@ module.exports = {
 	output: {
 		path: path.resolve(__dirname, 'dist'),
 		filename: 'bundle.js',
-		publicPath: 'pathOrUrlWhenProductionBuild',
+	},
+	devServer: {
+		contentBase: path.join(__dirname, 'dist'),
+		port: 9000,
 	},
 	module: {
 		rules: [
@@ -29,6 +32,5 @@ module.exports = {
 		],
 	},
 	resolve: {},
-	devtool: 'source-map',
 	plugins: [],
 };

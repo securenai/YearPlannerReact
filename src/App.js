@@ -4,8 +4,8 @@ import './App.css';
 const App = () => {
 	return (
 		<div>
-			<h1>hello world!!</h1>
-			<p>this is some text!!!</p>
+			<h1>hello worldfffddd!!</h1>
+			<p>hello there! this is a sentence!!!!!!!!</p>
 		</div>
 	);
 };
