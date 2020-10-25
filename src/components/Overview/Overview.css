@@ -1,0 +1,20 @@
+.overview-container {
+	margin: auto;
+	width: 70%;
+	padding: 10px;
+	border: 1px solid black;
+	background-color: beige;
+}
+.overview-header {
+	margin: auto;
+	width: 70%;
+	padding: 10px;
+	border: 1px solid black;
+	background-color: beige;
+	text-align: center;
+}
+.overview-body {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
