@@ -1,0 +1,31 @@
+.month-container {
+	font-family: 'Courier New', Courier, monospace;
+	min-width: 217px;
+	max-width: 217px;
+	display: flex;
+	flex-direction: column;
+	border: 2px solid black;
+	width: 30%;
+	margin: 1%;
+	background-color: white;
+}
+.month-header {
+	/* border: 1px solid black; */
+	color: azure;
+	background-color: rgb(138, 169, 253);
+	text-align: center;
+	cursor: pointer;
+}
+.month-header:hover {
+	background-color: rgb(148, 174, 247);
+	font-weight: bold;
+}
+
+.month-body {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+.calender_img {
+	width: 100%;
+}

@@ -1,4 +1,5 @@
 .overview-container {
+	font-family: 'Courier New', Courier, monospace;
 	margin: auto;
 	width: 70%;
 	padding: 10px;
@@ -17,4 +18,5 @@
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
+	justify-content: space-around;
 }
