@@ -1,0 +1,11 @@
+.dayGrid {
+	width: 14%;
+	height: 80px;
+	border-right: 1px solid rgb(136, 133, 136);
+	border-bottom: 1px solid rgb(136, 133, 136);
+	font-size: small;
+	cursor: pointer;
+}
+.dayGrid:hover {
+	background-color: rgb(252, 252, 208);
+}

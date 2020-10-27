@@ -1,4 +1,4 @@
-.month-container {
+.monthWidget-container {
 	font-family: 'Courier New', Courier, monospace;
 	min-width: 217px;
 	max-width: 217px;
@@ -9,19 +9,19 @@
 	margin: 1%;
 	background-color: white;
 }
-.month-header {
+.monthWidget-header {
 	/* border: 1px solid black; */
 	color: azure;
 	background-color: rgb(138, 169, 253);
 	text-align: center;
 	cursor: pointer;
 }
-.month-header:hover {
+.monthWidget-header:hover {
 	background-color: rgb(148, 174, 247);
 	font-weight: bold;
 }
 
-.month-body {
+.monthWidget-body {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;

@@ -2,6 +2,7 @@ import React from 'react';
 import './MonthWidget.css';
 import DayTinyGrid from '../DayTinyGrid/DayTinyGrid';
 import DayOfWeekPlaceholder from '../DayOfWeekPlaceHolder/DayOfWeekPlaceholder';
+import MonthWidgetHeader from './MonthWidgetHeader';
 
 const Month = (props) => {
 	const date = new Date();
@@ -9,10 +10,14 @@ const Month = (props) => {
 		(date.getMonth() + 1).toString().padStart(2, '0') +
 		date.getDate().toString().padStart(2, '0');
 	return (
-		<div className="month-container">
-			<div className="month-header">{props.month}</div>
+		<div className="monthWidget-container">
+			<MonthWidgetHeader
+				month={props.month}
+				year={props.year}
+				navToMonthViaMonth={props.navToMonthViaMonth}
+			/>
 			<DayOfWeekPlaceholder />
-			<div className="month-body">
+			<div className="monthWidget-body">
 				{props.monthData.map((day, index) => {
 					return (
 						<DayTinyGrid

@@ -1,0 +1,23 @@
+.month-container {
+	min-width: 550px;
+	max-width: 750px;
+	border: 1px solid black;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+}
+.month-header {
+	border: 1px solid black;
+	margin: 5px;
+}
+.month-header-title {
+	text-align: center;
+	border-bottom: 1px solid black;
+}
+.month-body {
+	border: 1px solid black;
+	margin: 5px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}

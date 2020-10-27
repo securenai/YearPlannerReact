@@ -1,0 +1,6 @@
+.dayOfWeekRow-wrapper {
+	display: flex;
+	font-size: 8px;
+	justify-content: space-around;
+	border-bottom: 1px solid black;
+}
