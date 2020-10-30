@@ -8,7 +8,7 @@ const MonthWidgetHeader = (props) => {
 		<div
 			className="monthWidget-header"
 			onClick={() => {
-				props.navToMonthViaMonth(history, props.month);
+				props.navToMonth(history, props.month);
 			}}>
 			{props.month}
 		</div>

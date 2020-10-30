@@ -38,6 +38,23 @@ class CalenderUtils {
 			'12',
 		];
 	}
+	getMonthNameAt(index) {
+		const monthNameList = [
+			'Janurary',
+			'February',
+			'March',
+			'April',
+			'May',
+			'June',
+			'July',
+			'August',
+			'September',
+			'October',
+			'November',
+			'December',
+		];
+		return monthNameList[index - 1];
+	}
 }
 
 export default CalenderUtils;

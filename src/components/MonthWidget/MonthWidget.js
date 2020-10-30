@@ -14,7 +14,7 @@ const Month = (props) => {
 			<MonthWidgetHeader
 				month={props.month}
 				year={props.year}
-				navToMonthViaMonth={props.navToMonthViaMonth}
+				navToMonth={props.navToMonth}
 			/>
 			<DayOfWeekPlaceholder />
 			<div className="monthWidget-body">

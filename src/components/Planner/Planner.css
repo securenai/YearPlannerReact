@@ -1,4 +1,5 @@
 .planner-container {
+	min-width: 700px;
 	font-family: 'Courier New', Courier, monospace;
 	margin: auto;
 	padding: 10px;
@@ -16,5 +17,5 @@
 }
 .planner-right {
 	border: 1px solid black;
-	width: 630px;
+	width: 600px;
 }

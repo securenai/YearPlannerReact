@@ -14,7 +14,7 @@ const Overview = (props) => {
 							month={month}
 							key={month}
 							monthData={props.monthData[index]}
-							navToMonthViaMonth={props.navToMonthViaMonth}
+							navToMonth={props.navToMonth}
 						/>
 					);
 				})}

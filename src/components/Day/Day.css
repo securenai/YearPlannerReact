@@ -1,3 +1,23 @@
 .day-container {
 	border: 1px solid black;
+	background-color: white;
+}
+.dailyTaskGrid {
+	border-bottom: 1px solid gray;
+	display: flex;
+	flex-direction: row;
+}
+.dayOfWeekTitle {
+	text-align: center;
+	border-bottom: 1px solid gray;
+}
+.period {
+	border-right: 1px solid black;
+	width: 50px;
+	text-align: left;
+}
+.task {
+	border-right: 1px solid black;
+	flex-grow: 1;
+	padding: 1%;
 }

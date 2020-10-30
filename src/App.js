@@ -6,15 +6,20 @@ import Planner from './components/Planner/Planner';
 import CalenderUtils from '../src/utils/CalenderUtils';
 
 const App = () => {
-	const [selectedMonth, setSelectedMonth] = useState('');
-
-	const year = new Date().getFullYear();
+	const d = new Date();
+	let year = d.getFullYear();
+	let month = d.getMonth() + 1;
+	let date = d.getDate();
 	const cu = new CalenderUtils();
 	const months = cu.getMonths();
 	const monthData = cu.getDayArrayForMonthOfYear(year);
 
-	function navToMonthViaMonth(history, month) {
-		setSelectedMonth(month);
+	console.log('app');
+
+	function navToMonth(history, m) {
+		month = parseInt(m);
+		console.log(month);
+		date = 1;
 		history.push('/planner');
 	}
 
@@ -30,7 +35,7 @@ const App = () => {
 								year={year}
 								months={months}
 								monthData={monthData}
-								navToMonthViaMonth={navToMonthViaMonth}
+								navToMonth={navToMonth}
 							/>
 						);
 					}}
@@ -38,7 +43,14 @@ const App = () => {
 				<Route
 					exact
 					path="/planner"
-					render={() => <Planner selectedMonth={selectedMonth} />}
+					render={() => (
+						<Planner
+							year={year}
+							month={month}
+							monthData={monthData}
+							date={date}
+						/>
+					)}
 				/>
 			</div>
 		</BrowserRouter>

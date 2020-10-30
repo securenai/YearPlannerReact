@@ -9,3 +9,6 @@
 .dayGrid:hover {
 	background-color: rgb(252, 252, 208);
 }
+.selectedDayGrid {
+	background-color: rgb(211, 241, 177);
+}
