@@ -1,0 +1,38 @@
+textarea:focus,
+input:focus {
+	outline: none;
+}
+.newTaskTitle {
+	background-color: cornsilk;
+	border-left: 1px solid;
+	border-top: 1px solid;
+	border-bottom: 1px solid;
+	padding: 1px;
+}
+.newTaskAddButton {
+	border-right: 1px solid;
+	border-top: 1px solid;
+	border-bottom: 1px solid;
+	font-size: 13px;
+	font-weight: bold;
+	padding: 3px;
+	background-color: rgb(162, 196, 112);
+	cursor: pointer;
+}
+.newTaskAddButton:hover {
+	background-color: rgb(191, 209, 164);
+}
+
+.newTaskCancelButton {
+	border-right: 1px solid;
+	border-top: 1px solid;
+	border-bottom: 1px solid;
+	font-size: 13px;
+	padding: 3px;
+	font-weight: bold;
+	background-color: lightcoral;
+	cursor: pointer;
+}
+.newTaskCancelButton:hover {
+	background-color: rgb(238, 162, 162);
+}

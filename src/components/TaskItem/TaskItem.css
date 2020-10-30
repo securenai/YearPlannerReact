@@ -1,0 +1,29 @@
+.taskItem {
+	border: 1px solid black;
+	border-radius: 5px;
+	background-color: rgb(225, 251, 152);
+	padding-left: 8px;
+	padding-right: 8px;
+	padding-top: 4px;
+	font-size: 13px;
+	margin: 2px;
+}
+.del-item-btn-show {
+	display: inline-block;
+	width: 15px;
+	height: 15px;
+	position: absolute;
+}
+.del-item-btn-hide {
+	display: none;
+	width: 15px;
+	height: 15px;
+	position: absolute;
+}
+.deleteItemButton-wrapper {
+	position: absolute;
+	width: 15px;
+	height: 15px;
+	margin-top: -12px;
+	cursor: pointer;
+}

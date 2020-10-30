@@ -14,10 +14,14 @@ const Day = (props) => {
 						<div className="dailyTaskGrid" key={index}>
 							<div className="period">{item.period}</div>
 							<div className="task">
-								{/* <div className="task-title">Tasks</div> */}
-								<TaskWrapper item={item} />
+								<TaskWrapper
+									item={item}
+									index={index}
+									tasks={props.tasks}
+									addTask={props.addTask}
+									deleteTask={props.deleteTask}
+								/>
 							</div>
-							{/* <div className="addTask">+</div> */}
 						</div>
 					);
 				})}

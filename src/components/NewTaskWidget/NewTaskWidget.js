@@ -1,0 +1,28 @@
+import React from 'react';
+import './NewTaskWidget.css';
+
+const NewTaskWidget = (props) => {
+	// console.log(props.index);
+	return (
+		<div>
+			<span className="newTaskWrapper">
+				<span className="newTaskTitle">new task:</span>
+				<input className="newTaskInput" type="text" />
+				<span
+					className="newTaskAddButton"
+					onClick={(e) => {
+						return props.addTask(e, props.index);
+					}}>
+					Add
+				</span>
+				<span
+					className="newTaskCancelButton"
+					onClick={(e) => props.closeTaskWidget(e)}>
+					Close
+				</span>
+			</span>
+		</div>
+	);
+};
+
+export default NewTaskWidget;

@@ -75,6 +75,21 @@ const Planner = (props) => {
 		// console.log(selectedMonth);
 	};
 
+	const handleAddTask = (e, index) => {
+		const val = e.target.previousSibling.value;
+		if (val.length > 0 && val !== null && val.trim() !== '') {
+			const newState = [...dayPlanner];
+			newState[index].tasks.push(val.trim());
+			setDayPlanner(newState);
+		}
+	};
+
+	const deleteTask = (periodIndex, itemIndex) => {
+		const newState = [...dayPlanner];
+		newState[periodIndex].tasks.splice(itemIndex, 1);
+		setDayPlanner(newState);
+	};
+
 	return (
 		<div className="planner-container">
 			<div className="planner-left">
@@ -93,6 +108,8 @@ const Planner = (props) => {
 					monthData={props.monthData}
 					date={selectedDate}
 					tasks={dayPlanner}
+					addTask={handleAddTask}
+					deleteTask={deleteTask}
 				/>
 			</div>
 		</div>

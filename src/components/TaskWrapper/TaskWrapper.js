@@ -1,31 +1,48 @@
 import React, {useState} from 'react';
+import NewTaskWidget from '../NewTaskWidget/NewTaskWidget';
 import './TaskWrapper.css';
+import TaskItem from '../TaskItem/TaskItem';
 
 const TaskWrapper = (props) => {
+	// console.log(props.index);
+
 	const [toggleBtn, setToggleBtn] = useState(false);
+	const [addTaskWidgetToggleBtn, setAddTaskWidgetToggleBtn] = useState(
+		false
+	);
 
 	const showAddTaskIcon = () => {
-		console.log('111');
 		setToggleBtn(true);
 	};
 	const hideAddTaskIcon = () => {
-		console.log('222');
 		setToggleBtn(false);
+	};
+	const handleOpenAddTaskWidget = () => {
+		setAddTaskWidgetToggleBtn(true);
+	};
+	const handleCloseTaskWidget = (e) => {
+		e.target.previousSibling.previousSibling.value = '';
+		setAddTaskWidgetToggleBtn(false);
 	};
 
 	return (
 		<div className="task-wrapper">
 			{props.item.tasks.map((task, index) => {
 				return (
-					<span className="taskItem" key={index}>
-						{task}
-					</span>
+					<TaskItem
+						task={task}
+						index={index}
+						key={index.toString()}
+						deleteTask={props.deleteTask}
+						periodIndex={props.index}
+					/>
 				);
 			})}
 			<span
 				className="addTaskButton"
 				onMouseEnter={showAddTaskIcon}
-				onMouseLeave={hideAddTaskIcon}>
+				onMouseLeave={hideAddTaskIcon}
+				onClick={handleOpenAddTaskWidget}>
 				<svg
 					className={
 						toggleBtn === true ? 'addTaskBtn-show' : 'addTaskBtn-hide'
@@ -38,6 +55,18 @@ const TaskWrapper = (props) => {
 					<path d="M38.5 25H27V14c0-.553-.448-1-1-1s-1 .447-1 1v11H13.5c-.552 0-1 .447-1 1s.448 1 1 1H25v12c0 .553.448 1 1 1s1-.447 1-1V27h11.5c.552 0 1-.447 1-1s-.448-1-1-1z" />
 				</svg>
 			</span>
+			<div
+				className={
+					addTaskWidgetToggleBtn === true
+						? 'addTaskWidgetToggleBtn-show'
+						: 'addTaskWidgetToggleBtn-hide'
+				}>
+				<NewTaskWidget
+					addTask={props.addTask}
+					index={props.index}
+					closeTaskWidget={handleCloseTaskWidget}
+				/>
+			</div>
 		</div>
 	);
 };

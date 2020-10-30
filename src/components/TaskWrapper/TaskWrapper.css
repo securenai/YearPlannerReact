@@ -10,13 +10,12 @@
 .addTaskBtn-show {
 	display: inline-block;
 }
-.taskItem {
-	border: 1px solid black;
-	border-radius: 5px;
-	background-color: rgb(225, 251, 152);
-	padding: 2px;
-	font-size: 13px;
-	margin: 2px;
+.addTaskWidgetToggleBtn-show {
+	display: inline-block;
+	margin: 3px;
+}
+.addTaskWidgetToggleBtn-hide {
+	display: none;
 }
 .task-wrapper {
 	display: flex;
