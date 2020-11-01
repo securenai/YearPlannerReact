@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import Day from '../Day/Day';
 import Month from '../Month/Month';
+import CalenderUtils from '../../utils/CalenderUtils';
 
 import './Planner.css';
 
@@ -8,57 +9,27 @@ const Planner = (props) => {
 	const [selectedDate, setSelectedDate] = useState(props.date);
 	const [selectedMonth, setSelectedMonth] = useState(props.month);
 	const [selectedYear, setSelectedYear] = useState(props.year);
+	const [addTaskToggleArray, setAddTaskToggleArray] = useState([]);
 
+	const cu = new CalenderUtils();
 	const [dayPlanner, setDayPlanner] = useState([
-		{
-			period: '12am',
-			tasks: ['汽車加油', '繳電費', '買午餐', '讀書', '體育課'],
-		},
-		{
-			period: '1am',
-			tasks: [
-				'汽車加油',
-				'繳電費',
-				'買午餐',
-				'讀書',
-				'體育課',
-				'汽車加油',
-				'繳電費',
-				'買午餐',
-				'讀書',
-				'體育課',
-				'汽車加油',
-				'繳電費',
-				'買午餐',
-				'讀書',
-				'體育課',
-			],
-		},
-		{period: '2am', tasks: []},
-		{period: '3am', tasks: []},
-		{period: '4am', tasks: []},
-		{period: '5am', tasks: []},
-		{period: '6am', tasks: []},
-		{period: '7am', tasks: []},
-		{period: '8am', tasks: []},
-		{period: '9am', tasks: []},
-		{period: '10am', tasks: []},
-		{period: '11am', tasks: []},
-		{period: '12pm', tasks: []},
-		{period: '1pm', tasks: []},
-		{period: '2pm', tasks: []},
-		{period: '3pm', tasks: []},
-		{period: '4pm', tasks: []},
-		{period: '5pm', tasks: []},
-		{period: '6pm', tasks: []},
-		{period: '7pm', tasks: []},
-		{period: '8pm', tasks: []},
-		{period: '9pm', tasks: []},
-		{period: '10pm', tasks: []},
-		{period: '11pm', tasks: []},
+		cu.getInitialPlannerForYear(),
 	]);
+	const tasks = dayPlanner[0][selectedMonth - 1].data[selectedDate - 1];
 
-	const handleToggleDate = (e) => {
+	useEffect(() => {
+		resetAddTaskToggleArray();
+	}, []);
+
+	const resetAddTaskToggleArray = () => {
+		const arr = [];
+		for (let i = 0; i < 24; i++) {
+			arr.push(false);
+		}
+		setAddTaskToggleArray(arr);
+	};
+
+	const handleChangeDate = (e) => {
 		if (e.target.querySelector('span') !== null) {
 			const toggledDate = parseInt(
 				e.target.querySelector('span').innerText
@@ -67,27 +38,48 @@ const Planner = (props) => {
 				setSelectedDate(toggledDate);
 			}
 		}
+		resetAddTaskToggleArray();
 	};
 
 	const handleChangeMonth = (value) => {
 		setSelectedMonth(selectedMonth + value);
 		setSelectedDate(1);
-		// console.log(selectedMonth);
+		resetAddTaskToggleArray();
 	};
 
 	const handleAddTask = (e, index) => {
 		const val = e.target.previousSibling.value;
+		e.target.previousSibling.value = '';
 		if (val.length > 0 && val !== null && val.trim() !== '') {
 			const newState = [...dayPlanner];
-			newState[index].tasks.push(val.trim());
+			newState[0][selectedMonth - 1].data[selectedDate - 1][
+				index
+			].tasks.push(val.trim());
 			setDayPlanner(newState);
+			handleToggleAddItemWidget(index, false);
 		}
 	};
 
 	const deleteTask = (periodIndex, itemIndex) => {
 		const newState = [...dayPlanner];
-		newState[periodIndex].tasks.splice(itemIndex, 1);
+		newState[0][selectedMonth - 1].data[selectedDate - 1][
+			periodIndex
+		].tasks.splice(itemIndex, 1);
+		//newState[periodIndex].tasks.splice(itemIndex, 1);
 		setDayPlanner(newState);
+	};
+
+	const handleToggleAddItemWidget = (index, open) => {
+		const newState = [];
+		for (let i = 0; i < 24; i++) {
+			newState.push(false);
+		}
+		if (open === true) {
+			newState[index] = true;
+		} else if (open === false) {
+			newState[index] = false;
+		}
+		setAddTaskToggleArray(newState);
 	};
 
 	return (
@@ -97,19 +89,21 @@ const Planner = (props) => {
 					month={selectedMonth}
 					date={selectedDate}
 					monthData={props.monthData}
-					handleToggleDate={handleToggleDate}
+					handleChangeDate={handleChangeDate}
 					handleChangeMonth={handleChangeMonth}
+					dayPlanner={dayPlanner[0][selectedMonth - 1].data}
 				/>
 			</div>
 			<div className="planner-right">
 				<Day
 					year={selectedYear}
 					month={selectedMonth}
-					monthData={props.monthData}
 					date={selectedDate}
-					tasks={dayPlanner}
+					tasks={tasks}
 					addTask={handleAddTask}
 					deleteTask={deleteTask}
+					addTaskToggleArray={addTaskToggleArray}
+					toggleAddItemWidget={handleToggleAddItemWidget}
 				/>
 			</div>
 		</div>

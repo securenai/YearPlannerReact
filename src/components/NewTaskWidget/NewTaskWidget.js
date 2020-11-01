@@ -2,12 +2,15 @@ import React from 'react';
 import './NewTaskWidget.css';
 
 const NewTaskWidget = (props) => {
-	// console.log(props.index);
 	return (
 		<div>
 			<span className="newTaskWrapper">
 				<span className="newTaskTitle">new task:</span>
-				<input className="newTaskInput" type="text" />
+				<input
+					ref={(input) => input && input.focus()}
+					className="newTaskInput"
+					type="text"
+				/>
 				<span
 					className="newTaskAddButton"
 					onClick={(e) => {

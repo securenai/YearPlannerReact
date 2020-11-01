@@ -1,7 +1,14 @@
 .day-container {
 	border: 1px solid black;
 	background-color: white;
+	height: 600px;
+	overflow-y: scroll;
 }
+/* .dayOfWeekTitleSticky {
+	position: fixed;
+	top: 0;
+	width: 100%;
+} */
 .dailyTaskGrid {
 	border-bottom: 1px solid gray;
 	display: flex;

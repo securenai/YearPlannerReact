@@ -7,7 +7,9 @@ const Day = (props) => {
 
 	return (
 		<div className="day-container">
-			<div className="dayOfWeekTitle">{d.toString().substring(0, 15)}</div>
+			<div className="dayOfWeekTitle dayOfWeekTitleSticky ">
+				{d.toString().substring(0, 15)}
+			</div>
 			<div className="dailyTaskContainer">
 				{props.tasks.map((item, index) => {
 					return (
@@ -20,6 +22,8 @@ const Day = (props) => {
 									tasks={props.tasks}
 									addTask={props.addTask}
 									deleteTask={props.deleteTask}
+									addTaskToggleArray={props.addTaskToggleArray}
+									toggleAddItemWidget={props.toggleAddItemWidget}
 								/>
 							</div>
 						</div>

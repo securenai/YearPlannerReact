@@ -4,12 +4,7 @@ import './TaskWrapper.css';
 import TaskItem from '../TaskItem/TaskItem';
 
 const TaskWrapper = (props) => {
-	// console.log(props.index);
-
 	const [toggleBtn, setToggleBtn] = useState(false);
-	const [addTaskWidgetToggleBtn, setAddTaskWidgetToggleBtn] = useState(
-		false
-	);
 
 	const showAddTaskIcon = () => {
 		setToggleBtn(true);
@@ -18,13 +13,12 @@ const TaskWrapper = (props) => {
 		setToggleBtn(false);
 	};
 	const handleOpenAddTaskWidget = () => {
-		setAddTaskWidgetToggleBtn(true);
+		props.toggleAddItemWidget(props.index, true);
 	};
 	const handleCloseTaskWidget = (e) => {
 		e.target.previousSibling.previousSibling.value = '';
-		setAddTaskWidgetToggleBtn(false);
+		props.toggleAddItemWidget(props.index, false);
 	};
-
 	return (
 		<div className="task-wrapper">
 			{props.item.tasks.map((task, index) => {
@@ -57,7 +51,7 @@ const TaskWrapper = (props) => {
 			</span>
 			<div
 				className={
-					addTaskWidgetToggleBtn === true
+					props.addTaskToggleArray[props.index] === true
 						? 'addTaskWidgetToggleBtn-show'
 						: 'addTaskWidgetToggleBtn-hide'
 				}>

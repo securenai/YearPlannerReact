@@ -8,12 +8,13 @@ const Month = (props) => {
 	const month = props.monthData[props.month - 1];
 	const cu = new CalenderUtils();
 	const monthName = cu.getMonthNameAt(props.month);
+	// console.log(props.dayPlanner);
 
 	return (
 		<div className="month-container">
 			<div className="month-header">
 				<div
-					className="month-header-1"
+					className={props.month === 1 ? '' : 'month-header-1'}
 					onClick={() => {
 						props.handleChangeMonth(-1);
 					}}></div>
@@ -28,7 +29,7 @@ const Month = (props) => {
 					</div>
 				</div>
 				<div
-					className="month-header-3"
+					className={props.month === 12 ? '' : 'month-header-3'}
 					onClick={() => {
 						props.handleChangeMonth(1);
 					}}></div>
@@ -41,7 +42,8 @@ const Month = (props) => {
 							date={props.date}
 							day={day}
 							key={index.toString()}
-							handleToggleDate={props.handleToggleDate}
+							handleChangeDate={props.handleChangeDate}
+							dayPlanner={props.dayPlanner}
 						/>
 					);
 				})}
