@@ -10,6 +10,7 @@ const Planner = (props) => {
 	const [selectedMonth, setSelectedMonth] = useState(props.month);
 	const [selectedYear, setSelectedYear] = useState(props.year);
 	const [addTaskToggleArray, setAddTaskToggleArray] = useState([]);
+	const [eventWidgetShow, setEventWidgetShow] = useState(false);
 
 	const cu = new CalenderUtils();
 	const [dayPlanner, setDayPlanner] = useState([
@@ -37,14 +38,33 @@ const Planner = (props) => {
 			if (isNaN(toggledDate) === false) {
 				setSelectedDate(toggledDate);
 			}
+			resetAddTaskToggleArray();
+			setEventWidgetShow(false);
+			return;
 		}
-		resetAddTaskToggleArray();
+		// console.log(e.target.className);
+		if (
+			e.target.className === 'eventItem' ||
+			e.target.className === 'eventItemMore'
+		) {
+			const toggledDate = parseInt(
+				e.target.parentElement.parentElement.querySelector('span')
+					.innerText
+			);
+			if (isNaN(toggledDate) === false) {
+				setSelectedDate(toggledDate);
+			}
+			resetAddTaskToggleArray();
+			setEventWidgetShow(false);
+			return;
+		}
 	};
 
 	const handleChangeMonth = (value) => {
 		setSelectedMonth(selectedMonth + value);
 		setSelectedDate(1);
 		resetAddTaskToggleArray();
+		setEventWidgetShow(false);
 	};
 
 	const handleAddTask = (e, index) => {
@@ -52,7 +72,7 @@ const Planner = (props) => {
 		e.target.previousSibling.value = '';
 		if (val.length > 0 && val !== null && val.trim() !== '') {
 			const newState = [...dayPlanner];
-			newState[0][selectedMonth - 1].data[selectedDate - 1][
+			newState[0][selectedMonth - 1].data[selectedDate - 1][1][
 				index
 			].tasks.push(val.trim());
 			setDayPlanner(newState);
@@ -62,7 +82,7 @@ const Planner = (props) => {
 
 	const deleteTask = (periodIndex, itemIndex) => {
 		const newState = [...dayPlanner];
-		newState[0][selectedMonth - 1].data[selectedDate - 1][
+		newState[0][selectedMonth - 1].data[selectedDate - 1][1][
 			periodIndex
 		].tasks.splice(itemIndex, 1);
 		//newState[periodIndex].tasks.splice(itemIndex, 1);
@@ -82,6 +102,21 @@ const Planner = (props) => {
 		setAddTaskToggleArray(newState);
 	};
 
+	const handleOpenAddEventWidget = (toggle, date) => {
+		// console.log(date);
+		setEventWidgetShow(toggle);
+	};
+
+	const handleAddEvent = (e) => {
+		const val = e.target.previousSibling.value;
+		e.target.previousSibling.value = '';
+		const newState = [...dayPlanner];
+		newState[0][selectedMonth - 1].data[selectedDate - 1][0].events.push(
+			val
+		);
+		setDayPlanner(newState);
+	};
+
 	return (
 		<div className="planner-container">
 			<div className="planner-left">
@@ -92,6 +127,9 @@ const Planner = (props) => {
 					handleChangeDate={handleChangeDate}
 					handleChangeMonth={handleChangeMonth}
 					dayPlanner={dayPlanner[0][selectedMonth - 1].data}
+					eventWidgetShow={eventWidgetShow}
+					openAddEventWidget={handleOpenAddEventWidget}
+					addEvent={handleAddEvent}
 				/>
 			</div>
 			<div className="planner-right">
@@ -99,7 +137,7 @@ const Planner = (props) => {
 					year={selectedYear}
 					month={selectedMonth}
 					date={selectedDate}
-					tasks={tasks}
+					tasks={tasks[1]}
 					addTask={handleAddTask}
 					deleteTask={deleteTask}
 					addTaskToggleArray={addTaskToggleArray}

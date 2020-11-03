@@ -1,12 +1,33 @@
-.day-container {
-	border: 1px solid black;
+/* .day-container {
+	background-color: rgb(65, 68, 63);
+	border: 2px solid black;
+	color: aqua;
+} */
+.dayOfWeekTitle {
+	background-color: rgb(65, 68, 63);
+	color: floralwhite;
+}
+.dailyTaskContainer {
+	/* border: 1px solid black; */
 	background-color: white;
 	height: 600px;
 	overflow-y: scroll;
+	scrollbar-width: thin; /* "auto" or "thin"  */
+	scrollbar-color: rgb(233, 233, 247) rgb(245, 244, 241); /* scroll thumb & track */
+}
+.dailyTaskContainer::-webkit-scrollbar {
+	width: 8px; /* width of the entire scrollbar */
+}
+.dailyTaskContainer::-webkit-scrollbar-track {
+	background: rgb(245, 244, 241); /* color of the tracking area */
+}
+.dailyTaskContainer::-webkit-scrollbar-thumb {
+	background-color: rgb(233, 233, 247); /* color of the scroll thumb */
+	border-radius: 5px; /* roundness of the scroll thumb */
+	border: 1px solid rgb(71, 69, 64); /* creates padding around scroll thumb */
 }
 /* .dayOfWeekTitleSticky {
-	position: fixed;
-	top: 0;
+	position: absolute;
 	width: 100%;
 } */
 .dailyTaskGrid {

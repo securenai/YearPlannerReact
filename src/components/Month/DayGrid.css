@@ -5,6 +5,16 @@
 	border-bottom: 1px solid rgb(136, 133, 136);
 	font-size: small;
 	cursor: pointer;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	scrollbar-width: none; /* "auto" or "thin"  */
+	scrollbar-color: rgb(233, 233, 247) rgb(245, 244, 241); /* scroll thumb & track */
+}
+.dayGrid::-webkit-scrollbar {
+	width: 1px; /* width of the entire scrollbar */
+}
+.dayGrid::-webkit-scrollbar-track {
+	background: rgb(245, 244, 241); /* color of the tracking area */
 }
 .dayGrid:hover {
 	background-color: rgb(252, 252, 208);
@@ -14,4 +24,24 @@
 }
 .selectedDayGrid {
 	background-color: rgb(211, 241, 177);
+}
+.addEventBox {
+	float: right;
+	width: 15px;
+	height: 15px;
+}
+.addEventBtn-hide {
+	display: none;
+}
+.addEventBtn-show {
+	display: inline-block;
+}
+.eventList {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+}
+.eventItem {
+	background-color: rgb(207, 210, 238);
+	font-weight: bold;
 }

@@ -1,14 +1,14 @@
-import React from 'react';
+import React, {useState} from 'react';
 import DayGrid from './DayGrid';
 import DayOfWeekRow from './DayOfWeekRow';
 import './Month.css';
 import CalenderUtils from '../../utils/CalenderUtils';
+import AddEventWidget from './AddEventWidget';
 
 const Month = (props) => {
 	const month = props.monthData[props.month - 1];
 	const cu = new CalenderUtils();
 	const monthName = cu.getMonthNameAt(props.month);
-	// console.log(props.dayPlanner);
 
 	return (
 		<div className="month-container">
@@ -21,7 +21,7 @@ const Month = (props) => {
 				<div className="month-header-2">
 					<div className="month-header-title">
 						<div className="month-header-title-month-number">
-							{props.month}
+							{`${props.month} 月`}
 						</div>
 						<div className="month-header-title-month-name">
 							{monthName}
@@ -34,6 +34,17 @@ const Month = (props) => {
 						props.handleChangeMonth(1);
 					}}></div>
 			</div>
+			{(() => {
+				if (props.eventWidgetShow === true) {
+					return (
+						<AddEventWidget
+							month={props.month}
+							date={props.date}
+							addEvent={props.addEvent}
+						/>
+					);
+				}
+			})()}
 			<DayOfWeekRow />
 			<div className="month-body">
 				{month.map((day, index) => {
@@ -44,6 +55,7 @@ const Month = (props) => {
 							key={index.toString()}
 							handleChangeDate={props.handleChangeDate}
 							dayPlanner={props.dayPlanner}
+							openAddEventWidget={props.openAddEventWidget}
 						/>
 					);
 				})}

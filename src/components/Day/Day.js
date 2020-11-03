@@ -1,4 +1,6 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
+
 import TaskWrapper from '../TaskWrapper/TaskWrapper';
 import './Day.css';
 
