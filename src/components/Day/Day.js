@@ -1,16 +1,27 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React, {useState} from 'react';
 
 import TaskWrapper from '../TaskWrapper/TaskWrapper';
 import './Day.css';
+import img from '../../images/close_task_item.png';
+import EventItem from '../EventItem/EventItem';
 
 const Day = (props) => {
 	const d = new Date(props.year, props.month - 1, props.date, 0, 0, 0, 0);
 
 	return (
 		<div className="day-container">
-			<div className="dayOfWeekTitle dayOfWeekTitleSticky ">
-				{d.toString().substring(0, 15)}
+			<div className="dayOfWeekTitle">{d.toString().substring(0, 15)}</div>
+			<div className="eventsList">
+				{props.events.events.map((event, index) => {
+					return (
+						<EventItem
+							event={event}
+							index={index}
+							key={index.toString()}
+							deleteEvent={props.deleteEvent}
+						/>
+					);
+				})}
 			</div>
 			<div className="dailyTaskContainer">
 				{props.tasks.map((item, index) => {

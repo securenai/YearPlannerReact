@@ -89,6 +89,15 @@ const Planner = (props) => {
 		setDayPlanner(newState);
 	};
 
+	const deleteEvent = (index) => {
+		const newState = [...dayPlanner];
+		newState[0][selectedMonth - 1].data[selectedDate - 1][0].events.splice(
+			index,
+			1
+		);
+		setDayPlanner(newState);
+	};
+
 	const handleToggleAddItemWidget = (index, open) => {
 		const newState = [];
 		for (let i = 0; i < 24; i++) {
@@ -138,8 +147,10 @@ const Planner = (props) => {
 					month={selectedMonth}
 					date={selectedDate}
 					tasks={tasks[1]}
+					events={tasks[0]}
 					addTask={handleAddTask}
 					deleteTask={deleteTask}
+					deleteEvent={deleteEvent}
 					addTaskToggleArray={addTaskToggleArray}
 					toggleAddItemWidget={handleToggleAddItemWidget}
 				/>
