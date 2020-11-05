@@ -1,15 +1,10 @@
 import React from 'react';
-import {useHistory} from 'react-router-dom';
 
 const MonthWidgetHeader = (props) => {
-	const history = useHistory();
-
 	return (
 		<div
 			className="monthWidget-header"
-			onClick={() => {
-				props.navToMonth(history, props.month);
-			}}>
+			onClick={() => props.navToMonthFromOverview(props.month)}>
 			{props.month}
 		</div>
 	);

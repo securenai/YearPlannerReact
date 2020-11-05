@@ -1,14 +1,11 @@
 import React, {useState, useEffect} from 'react';
-import Day from '../Day/Day';
-import Month from '../Month/Month';
+import Day from './Day/Day';
+import Month from './Month/Month';
 import CalenderUtils from '../../utils/CalenderUtils';
 
 import './Planner.css';
 
 const Planner = (props) => {
-	const [selectedDate, setSelectedDate] = useState(props.date);
-	const [selectedMonth, setSelectedMonth] = useState(props.month);
-	const [selectedYear, setSelectedYear] = useState(props.year);
 	const [addTaskToggleArray, setAddTaskToggleArray] = useState([]);
 	const [eventWidgetShow, setEventWidgetShow] = useState(false);
 
@@ -16,7 +13,9 @@ const Planner = (props) => {
 	const [dayPlanner, setDayPlanner] = useState([
 		cu.getInitialPlannerForYear(),
 	]);
-	const tasks = dayPlanner[0][selectedMonth - 1].data[selectedDate - 1];
+
+	const tasks =
+		dayPlanner[0][props.selectedMonth - 1].data[props.selectedDate - 1];
 
 	useEffect(() => {
 		resetAddTaskToggleArray();
@@ -36,13 +35,12 @@ const Planner = (props) => {
 				e.target.querySelector('span').innerText
 			);
 			if (isNaN(toggledDate) === false) {
-				setSelectedDate(toggledDate);
+				props.changeDate(toggledDate);
 			}
 			resetAddTaskToggleArray();
 			setEventWidgetShow(false);
 			return;
 		}
-		// console.log(e.target.className);
 		if (
 			e.target.className === 'eventItem' ||
 			e.target.className === 'eventItemMore'
@@ -52,7 +50,7 @@ const Planner = (props) => {
 					.innerText
 			);
 			if (isNaN(toggledDate) === false) {
-				setSelectedDate(toggledDate);
+				props.changeDate(toggledDate);
 			}
 			resetAddTaskToggleArray();
 			setEventWidgetShow(false);
@@ -61,8 +59,7 @@ const Planner = (props) => {
 	};
 
 	const handleChangeMonth = (value) => {
-		setSelectedMonth(selectedMonth + value);
-		setSelectedDate(1);
+		props.changeMonth(value);
 		resetAddTaskToggleArray();
 		setEventWidgetShow(false);
 	};
@@ -72,7 +69,7 @@ const Planner = (props) => {
 		e.target.previousSibling.value = '';
 		if (val.length > 0 && val !== null && val.trim() !== '') {
 			const newState = [...dayPlanner];
-			newState[0][selectedMonth - 1].data[selectedDate - 1][1][
+			newState[0][props.selectedMonth - 1].data[props.selectedDate - 1][1][
 				index
 			].tasks.push(val.trim());
 			setDayPlanner(newState);
@@ -82,19 +79,17 @@ const Planner = (props) => {
 
 	const deleteTask = (periodIndex, itemIndex) => {
 		const newState = [...dayPlanner];
-		newState[0][selectedMonth - 1].data[selectedDate - 1][1][
+		newState[0][props.selectedMonth - 1].data[props.selectedDate - 1][1][
 			periodIndex
 		].tasks.splice(itemIndex, 1);
-		//newState[periodIndex].tasks.splice(itemIndex, 1);
 		setDayPlanner(newState);
 	};
 
 	const deleteEvent = (index) => {
 		const newState = [...dayPlanner];
-		newState[0][selectedMonth - 1].data[selectedDate - 1][0].events.splice(
-			index,
-			1
-		);
+		newState[0][props.selectedMonth - 1].data[
+			props.selectedDate - 1
+		][0].events.splice(index, 1);
 		setDayPlanner(newState);
 	};
 
@@ -111,18 +106,17 @@ const Planner = (props) => {
 		setAddTaskToggleArray(newState);
 	};
 
-	const handleOpenAddEventWidget = (toggle, date) => {
-		// console.log(date);
-		setEventWidgetShow(toggle);
+	const handleOpenAddEventWidget = () => {
+		setEventWidgetShow(true);
 	};
 
 	const handleAddEvent = (e) => {
 		const val = e.target.previousSibling.value;
 		e.target.previousSibling.value = '';
 		const newState = [...dayPlanner];
-		newState[0][selectedMonth - 1].data[selectedDate - 1][0].events.push(
-			val
-		);
+		newState[0][props.selectedMonth - 1].data[
+			props.selectedDate - 1
+		][0].events.push(val);
 		setDayPlanner(newState);
 	};
 
@@ -130,12 +124,12 @@ const Planner = (props) => {
 		<div className="planner-container">
 			<div className="planner-left">
 				<Month
-					month={selectedMonth}
-					date={selectedDate}
+					month={props.selectedMonth}
+					date={props.selectedDate}
 					monthData={props.monthData}
-					handleChangeDate={handleChangeDate}
-					handleChangeMonth={handleChangeMonth}
-					dayPlanner={dayPlanner[0][selectedMonth - 1].data}
+					changeDate={handleChangeDate}
+					changeMonth={handleChangeMonth}
+					dayPlanner={dayPlanner[0][props.selectedMonth - 1].data}
 					eventWidgetShow={eventWidgetShow}
 					openAddEventWidget={handleOpenAddEventWidget}
 					addEvent={handleAddEvent}
@@ -143,9 +137,9 @@ const Planner = (props) => {
 			</div>
 			<div className="planner-right">
 				<Day
-					year={selectedYear}
-					month={selectedMonth}
-					date={selectedDate}
+					selectedYear={props.selectedYear}
+					month={props.selectedMonth}
+					date={props.selectedDate}
 					tasks={tasks[1]}
 					events={tasks[0]}
 					addTask={handleAddTask}

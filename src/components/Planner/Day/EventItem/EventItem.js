@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import './EventItem.css';
-import img from '../../images/close_task_item.png';
+import img from '../../../../images/close_task_item.png';
 
 const EventItem = (props) => {
 	const [toggleEventItemDeleteBtn, setToggleEventItemDeleteBtn] = useState(

@@ -1,9 +1,7 @@
-import React, {useState} from 'react';
-
-import TaskWrapper from '../TaskWrapper/TaskWrapper';
+import React from 'react';
+import TaskWrapper from './TaskWrapper/TaskWrapper';
+import EventItem from './EventItem/EventItem';
 import './Day.css';
-import img from '../../images/close_task_item.png';
-import EventItem from '../EventItem/EventItem';
 
 const Day = (props) => {
 	const d = new Date(props.year, props.month - 1, props.date, 0, 0, 0, 0);

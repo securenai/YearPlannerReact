@@ -38,7 +38,7 @@ const DayGrid = (props) => {
 		<div
 			className={classForDayGrid}
 			onClick={(e) => {
-				props.handleChangeDate(e);
+				props.changeDate(e);
 			}}>
 			<span>{props.day === 0 ? '' : props.day}</span>
 			<div
@@ -51,7 +51,7 @@ const DayGrid = (props) => {
 							? 'addEventBtn-show'
 							: 'addEventBtn-hide'
 					}
-					onClick={() => props.openAddEventWidget(true, props.day)}
+					onClick={props.openAddEventWidget}
 					xmlns="http://www.w3.org/2000/svg"
 					width="15"
 					height="15"

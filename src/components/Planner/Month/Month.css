@@ -38,7 +38,7 @@
 	margin-left: 2px;
 	width: 30px;
 	height: 30px;
-	background: url('../../../src/images/btn_left.png');
+	background: url('./images/btn_left.png');
 	background-repeat: no-repeat;
 	cursor: pointer;
 }
@@ -50,7 +50,7 @@
 	margin-top: 3px;
 	width: 30px;
 	height: 30px;
-	background: url('../../../src/images/btn_right.png');
+	background: url('./images/btn_right.png');
 	background-repeat: no-repeat;
 	cursor: pointer;
 }

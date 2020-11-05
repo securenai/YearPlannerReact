@@ -1,7 +1,7 @@
 import React from 'react';
 import './MonthWidget.css';
-import DayTinyGrid from '../DayTinyGrid/DayTinyGrid';
-import DayOfWeekPlaceholder from '../DayOfWeekPlaceHolder/DayOfWeekPlaceholder';
+import DayTinyGrid from './DayTinyGrid/DayTinyGrid';
+import DayOfWeekPlaceholder from './DayOfWeekPlaceHolder/DayOfWeekPlaceholder';
 import MonthWidgetHeader from './MonthWidgetHeader';
 
 const Month = (props) => {
@@ -14,7 +14,7 @@ const Month = (props) => {
 			<MonthWidgetHeader
 				month={props.month}
 				year={props.year}
-				navToMonth={props.navToMonth}
+				navToMonthFromOverview={props.navToMonthFromOverview}
 			/>
 			<DayOfWeekPlaceholder />
 			<div className="monthWidget-body">

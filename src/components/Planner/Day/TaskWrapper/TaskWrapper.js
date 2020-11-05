@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-import NewTaskWidget from '../NewTaskWidget/NewTaskWidget';
+import NewTaskWidget from './NewTaskWidget/NewTaskWidget';
+import TaskItem from './TaskItem/TaskItem';
 import './TaskWrapper.css';
-import TaskItem from '../TaskItem/TaskItem';
 
 const TaskWrapper = (props) => {
 	const [toggleBtn, setToggleBtn] = useState(false);

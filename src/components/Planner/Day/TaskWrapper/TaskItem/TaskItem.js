@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import './TaskItem.css';
-import img from '../../images/close_task_item.png';
+import img from '../../../../../images/close_task_item.png';
 
 const TaskItem = (props) => {
 	const [toggleItemDeleteBtn, setToggleItemDeleteBtn] = useState(false);

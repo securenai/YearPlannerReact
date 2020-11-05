@@ -1,9 +1,9 @@
-import React, {useState} from 'react';
-import DayGrid from './DayGrid';
-import DayOfWeekRow from './DayOfWeekRow';
+import React from 'react';
+import DayGrid from './DayGrid/DayGrid';
+import DayOfWeekRow from './DayOfWeekRow/DayOfWeekRow';
+import CalenderUtils from '../../../utils/CalenderUtils';
+import AddEventWidget from './AddEventWidget/AddEventWidget';
 import './Month.css';
-import CalenderUtils from '../../utils/CalenderUtils';
-import AddEventWidget from './AddEventWidget';
 
 const Month = (props) => {
 	const month = props.monthData[props.month - 1];
@@ -16,7 +16,7 @@ const Month = (props) => {
 				<div
 					className={props.month === 1 ? '' : 'month-header-1'}
 					onClick={() => {
-						props.handleChangeMonth(-1);
+						props.changeMonth(-1);
 					}}></div>
 				<div className="month-header-2">
 					<div className="month-header-title">
@@ -31,7 +31,7 @@ const Month = (props) => {
 				<div
 					className={props.month === 12 ? '' : 'month-header-3'}
 					onClick={() => {
-						props.handleChangeMonth(1);
+						props.changeMonth(1);
 					}}></div>
 			</div>
 			{(() => {
@@ -53,7 +53,7 @@ const Month = (props) => {
 							date={props.date}
 							day={day}
 							key={index.toString()}
-							handleChangeDate={props.handleChangeDate}
+							changeDate={props.changeDate}
 							dayPlanner={props.dayPlanner}
 							openAddEventWidget={props.openAddEventWidget}
 						/>
