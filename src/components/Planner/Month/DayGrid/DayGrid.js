@@ -9,18 +9,18 @@ const DayGrid = (props) => {
 		if (props.date === props.day) {
 			classForDayGrid += ' selectedDayGrid';
 		}
-		props.dayPlanner[props.day - 1][1].forEach((item) => {
+		props.monthDayPlanner[props.day - 1][1].forEach((item) => {
 			if (item.tasks.length > 0) {
 				classForDayGrid += ' dayGridHasTask';
 			}
 		});
 	}
 	let more = '';
-	if (typeof props.dayPlanner[props.day - 1] === 'undefined') {
+	if (typeof props.monthDayPlanner[props.day - 1] === 'undefined') {
 	} else {
-		if (props.dayPlanner[props.day - 1][0].events.length > 1) {
+		if (props.monthDayPlanner[props.day - 1][0].events.length > 1) {
 			more = `& ${
-				props.dayPlanner[props.day - 1][0].events.length - 1
+				props.monthDayPlanner[props.day - 1][0].events.length - 1
 			} more..`;
 		}
 	}
@@ -62,9 +62,9 @@ const DayGrid = (props) => {
 			</div>
 			<div className="eventList">
 				<div className="eventItem">
-					{props.dayPlanner[props.day - 1] !== undefined &&
-					props.dayPlanner[props.day - 1][0].events[0] !== undefined
-						? `∙${props.dayPlanner[props.day - 1][0].events[0]}`
+					{props.monthDayPlanner[props.day - 1] !== undefined &&
+					props.monthDayPlanner[props.day - 1][0].events[0] !== undefined
+						? `∙${props.monthDayPlanner[props.day - 1][0].events[0]}`
 						: ''}
 				</div>
 				<div className="eventItemMore">{more}</div>

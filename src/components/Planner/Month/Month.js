@@ -54,7 +54,7 @@ const Month = (props) => {
 							day={day}
 							key={index.toString()}
 							changeDate={props.changeDate}
-							dayPlanner={props.dayPlanner}
+							monthDayPlanner={props.monthDayPlanner}
 							openAddEventWidget={props.openAddEventWidget}
 						/>
 					);
