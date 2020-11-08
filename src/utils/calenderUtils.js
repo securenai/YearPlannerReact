@@ -76,7 +76,7 @@ class CalenderUtils {
 			const cnt = daysInEachMonth[index];
 			for (let i = 0; i < cnt; i++) {
 				month.data.push([
-					{events: ['dinner with Susan', 'Homework deadline']},
+					{events: []},
 					[
 						{period: '12am', tasks: []},
 						{period: '1am', tasks: []},

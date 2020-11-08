@@ -54,3 +54,13 @@
 	background-repeat: no-repeat;
 	cursor: pointer;
 }
+.home-btn {
+	width: 60px;
+	background-color: blanchedalmond;
+	border: 1px solid black;
+	margin-top: 5px;
+	margin-left: 5px;
+	text-align: center;
+	font-weight: bold;
+	cursor: pointer;
+}

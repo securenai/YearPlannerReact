@@ -15,6 +15,7 @@ const Overview = (props) => {
 							key={month}
 							monthData={props.monthData[index]}
 							navToMonthFromOverview={props.navToMonthFromOverview}
+							navToDayFromOverview={props.navToDayFromOverview}
 						/>
 					);
 				})}

@@ -12,6 +12,9 @@ const Month = (props) => {
 
 	return (
 		<div className="month-container">
+			<div className="home-btn" onClick={props.returnHome}>
+				Home
+			</div>
 			<div className="month-header">
 				<div
 					className={props.month === 1 ? '' : 'month-header-1'}

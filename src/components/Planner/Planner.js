@@ -96,6 +96,7 @@ const Planner = (props) => {
 					eventWidgetShow={eventWidgetShow}
 					openAddEventWidget={handleOpenAddEventWidget}
 					addEvent={props.addEvent}
+					returnHome={props.returnHome}
 				/>
 			</div>
 			<div className="planner-right">

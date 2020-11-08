@@ -4,7 +4,7 @@ import DayTinyGrid from './DayTinyGrid/DayTinyGrid';
 import DayOfWeekPlaceholder from './DayOfWeekPlaceHolder/DayOfWeekPlaceholder';
 import MonthWidgetHeader from './MonthWidgetHeader';
 
-const Month = (props) => {
+const MonthWidget = (props) => {
 	const date = new Date();
 	const todayKey =
 		(date.getMonth() + 1).toString().padStart(2, '0') +
@@ -23,9 +23,11 @@ const Month = (props) => {
 						<DayTinyGrid
 							key={index}
 							dayOfMonth={day.toString()}
+							month={props.month}
 							isToday={
 								props.month + day.toString() === todayKey ? true : false
 							}
+							navToDayFromOverview={props.navToDayFromOverview}
 						/>
 					);
 				})}
@@ -34,4 +36,4 @@ const Month = (props) => {
 	);
 };
 
-export default Month;
+export default MonthWidget;

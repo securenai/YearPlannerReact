@@ -45,6 +45,14 @@ const MainPage = ({
 		onUpdateDestination(1);
 	};
 
+	const handleNavToDay = (day, month) => {
+		if (day > 0) {
+			onUpdateMonth(month);
+			onUpdateDay(day);
+			onUpdateDestination(1);
+		}
+	};
+
 	const handleChangeMonth = (value) => {
 		// setSelectedMonth(selectedMonth + value);
 		onUpdateMonth(selectedMonth + value);
@@ -96,6 +104,10 @@ const MainPage = ({
 		onUpdate(newState);
 	};
 
+	const handleReturnHome = () => {
+		onUpdateDestination(0);
+	};
+
 	useEffect(() => {
 		onMountDestination(0);
 		onMountYear(new Date().getFullYear());
@@ -105,6 +117,18 @@ const MainPage = ({
 		onMounted([data]);
 	}, []);
 
+	useEffect(() => {
+		const plannerData = localStorage.getItem('day-planner');
+		if (plannerData) {
+			onUpdate(JSON.parse(plannerData));
+		}
+	}, []);
+
+	useEffect(() => {
+		const data = [...dayPlanner];
+		localStorage.setItem('day-planner', JSON.stringify(data));
+	});
+
 	switch (destination) {
 		case 0:
 			return (
@@ -113,6 +137,7 @@ const MainPage = ({
 					months={months}
 					monthData={monthData}
 					navToMonthFromOverview={handleNavToMonth}
+					navToDayFromOverview={handleNavToDay}
 				/>
 			);
 		case 1:
@@ -130,6 +155,7 @@ const MainPage = ({
 					deleteEvent={handleDeleteEvent}
 					addTask={handleAddTask}
 					deleteTask={handleDeleteTask}
+					returnHome={handleReturnHome}
 				/>
 			);
 		default:
@@ -139,6 +165,7 @@ const MainPage = ({
 					months={months}
 					monthData={monthData}
 					navToMonthFromOverview={handleNavToMonth}
+					navToDayFromOverview={handleNavToDay}
 				/>
 			);
 	}
