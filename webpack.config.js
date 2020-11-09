@@ -1,6 +1,7 @@
 'use strict';
 
 const path = require('path');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
 	entry: './src/index.js',
@@ -9,6 +10,9 @@ module.exports = {
 		path: path.resolve(__dirname, 'dist'),
 		filename: 'bundle.js',
 		publicPath: '/dist/',
+	},
+	optimization: {
+		minimizer: [new UglifyJsPlugin()],
 	},
 	devServer: {
 		contentBase: path.join(__dirname, 'dist'),

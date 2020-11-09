@@ -85,6 +85,7 @@ const Planner = (props) => {
 		<div className="planner-container">
 			<div className="planner-left">
 				<Month
+					year={props.selectedYear}
 					month={props.selectedMonth}
 					date={props.selectedDate}
 					monthData={props.monthData}
