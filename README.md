@@ -1,4 +1,4 @@
 # YearPlannerReact
 
-DEMO(link below) :
+Demo : 
 https://securenai.github.io/YearPlannerReact/
