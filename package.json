@@ -4,7 +4,8 @@
   "description": "this is my first react app and I am making a year planner",
   "main": "index.js",
   "scripts": {
-    "build": "./node_modules/.bin/webpack -w",
+    "build": "./node_modules/.bin/webpack",
+    "build:watch": "./node_modules/.bin/webpack -w",
     "start:dev": "./node_modules/.bin/webpack-dev-server"
   },
   "author": "_nova",
