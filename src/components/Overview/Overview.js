@@ -6,10 +6,19 @@ const Overview = (props) => {
 	return (
 		<div className="overview-container">
 			<div className="overview-header">{`Year ${props.selectedYear}`}</div>
+			{/* <div>
+				<select
+					className="overview-select-year"
+					onChange={(e) => props.changeYear(e)}>
+					<option>{new Date().getFullYear()}</option>
+					<option>{new Date().getFullYear() + 1}</option>
+				</select>
+			</div> */}
 			<div className="overview-body">
 				{props.months.map((month, index) => {
 					return (
 						<MonthWidget
+							dayPlanner={props.dayPlanner}
 							selectedYear={props.selectedYear}
 							month={month}
 							key={month}
@@ -19,6 +28,15 @@ const Overview = (props) => {
 						/>
 					);
 				})}
+			</div>
+			<div
+				className="reset-all-btn"
+				onClick={() => {
+					if (window.confirm('Clear All Data?')) {
+						return props.resetAllData();
+					}
+				}}>
+				clear all data
 			</div>
 		</div>
 	);

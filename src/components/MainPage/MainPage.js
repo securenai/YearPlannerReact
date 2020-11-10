@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import CalenderUtils from '../../utils/CalenderUtils';
 import Overview from '../Overview/Overview';
 import Planner from '../Planner/Planner';
@@ -37,11 +37,8 @@ const MainPage = ({
 
 	/*****************************************  Event handlers *****************************************/
 	const handleNavToMonth = (month) => {
-		// setSelectedMonth(parseInt(month));
-		// setSelectedDate(1);
 		onUpdateMonth(parseInt(month));
 		onUpdateDay(1);
-		// setDestination(1);
 		onUpdateDestination(1);
 	};
 
@@ -54,14 +51,12 @@ const MainPage = ({
 	};
 
 	const handleChangeMonth = (value) => {
-		// setSelectedMonth(selectedMonth + value);
 		onUpdateMonth(selectedMonth + value);
 		onUpdateDay(1);
 	};
 
 	const handleChangeDate = (date) => {
 		onUpdateDay(date);
-		// setSelectedDate(date);
 	};
 
 	const handleDeleteEvent = (index) => {
@@ -92,7 +87,6 @@ const MainPage = ({
 				index
 			].tasks.push(val.trim());
 			onUpdate(newState);
-			// handleToggleAddItemWidget(index, false);
 		}
 	};
 
@@ -106,6 +100,15 @@ const MainPage = ({
 
 	const handleReturnHome = () => {
 		onUpdateDestination(0);
+	};
+
+	// const handleChangeYear = (e) => {
+	// 	onUpdateYear(parseInt(e.target.value));
+	// };
+
+	const handleResetAllData = () => {
+		const data = new CalenderUtils().getInitialPlannerForYear();
+		onMounted([data]);
 	};
 
 	useEffect(() => {
@@ -138,6 +141,8 @@ const MainPage = ({
 					monthData={monthData}
 					navToMonthFromOverview={handleNavToMonth}
 					navToDayFromOverview={handleNavToDay}
+					resetAllData={handleResetAllData}
+					// changeYear={handleChangeYear}
 				/>
 			);
 		case 1:

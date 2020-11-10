@@ -13,7 +13,7 @@ const MonthWidget = (props) => {
 		<div className="monthWidget-container">
 			<MonthWidgetHeader
 				month={props.month}
-				year={props.year}
+				year={props.selectedYear}
 				navToMonthFromOverview={props.navToMonthFromOverview}
 			/>
 			<DayOfWeekPlaceholder />
@@ -25,7 +25,10 @@ const MonthWidget = (props) => {
 							dayOfMonth={day.toString()}
 							month={props.month}
 							isToday={
-								props.month + day.toString() === todayKey ? true : false
+								props.selectedYear === new Date().getFullYear() &&
+								props.month + day.toString() === todayKey
+									? true
+									: false
 							}
 							navToDayFromOverview={props.navToDayFromOverview}
 						/>

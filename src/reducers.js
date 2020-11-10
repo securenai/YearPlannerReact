@@ -13,18 +13,16 @@ export const dayPlanner = (state = [], action) => {
 
 	switch (type) {
 		case CREATE_DAY_PLANNER: {
-			console.log('CREATE_DAY_PLANNER');
+			// console.log('CREATE_DAY_PLANNER');
 			const newState = payload;
 			return newState;
 		}
 		case UPDATE_DAY_PLANNER: {
-			console.log('UPDATE_DAY_PLANNER');
-			// console.log(payload);
+			// console.log('UPDATE_DAY_PLANNER');
 			const newState = payload;
 			return newState;
 		}
 		default:
-			// console.log('default');
 			return state;
 	}
 };
@@ -34,18 +32,16 @@ export const selectedYear = (state = [], action) => {
 
 	switch (type) {
 		case CREATE_SELECTED_YEAR: {
-			console.log('CREATE_SELECTED_YEAR');
+			// console.log('CREATE_SELECTED_YEAR');
 			const newState = payload;
 			return newState;
 		}
 		case UPDATE_SELECTED_YEAR: {
-			console.log('UPDATE_SELECTED_YEAR');
-			// console.log(payload);
+			// console.log('UPDATE_SELECTED_YEAR');
 			const newState = payload;
 			return newState;
 		}
 		default:
-			// console.log('default');
 			return state;
 	}
 };
@@ -55,18 +51,16 @@ export const selectedMonth = (state = [], action) => {
 
 	switch (type) {
 		case CREATE_SELECTED_MONTH: {
-			console.log('CREATE_SELECTED_MONTH');
+			// console.log('CREATE_SELECTED_MONTH');
 			const newState = payload;
 			return newState;
 		}
 		case UPDATE_SELECTED_MONTH: {
-			console.log('UPDATE_SELECTED_MONTH');
-			// console.log(payload);
+			// console.log('UPDATE_SELECTED_MONTH');
 			const newState = payload;
 			return newState;
 		}
 		default:
-			// console.log('default');
 			return state;
 	}
 };
@@ -76,18 +70,16 @@ export const selectedDate = (state = [], action) => {
 
 	switch (type) {
 		case CREATE_SELECTED_DAY: {
-			console.log('CREATE_SELECTED_DAY');
+			// console.log('CREATE_SELECTED_DAY');
 			const newState = payload;
 			return newState;
 		}
 		case UPDATE_SELECTED_DAY: {
-			console.log('UPDATE_SELECTED_DAY');
-			// console.log(payload);
+			// console.log('UPDATE_SELECTED_DAY');
 			const newState = payload;
 			return newState;
 		}
 		default:
-			// console.log('default');
 			return state;
 	}
 };
@@ -97,18 +89,16 @@ export const destination = (state = [], action) => {
 
 	switch (type) {
 		case CREATE_DESTINATION: {
-			console.log('CREATE_DESTINATION');
+			// console.log('CREATE_DESTINATION');
 			const newState = payload;
 			return newState;
 		}
 		case UPDATE_DESTINATION: {
-			console.log('UPDATE_DESTINATION');
-			// console.log(payload);
+			// console.log('UPDATE_DESTINATION');
 			const newState = payload;
 			return newState;
 		}
 		default:
-			// console.log('default');
 			return state;
 	}
 };
