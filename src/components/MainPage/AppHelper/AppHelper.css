@@ -1,0 +1,28 @@
+.helper {
+	width: 100%;
+	height: 100%;
+	/* background-color: rgb(12 12 12,0.7); */
+	background-color: rgba(12, 12, 12, 0.7);
+	position: absolute;
+	/* opacity: 0.7; */
+	z-index: 2;
+	display: flex;
+	justify-content: center;
+	cursor: pointer;
+}
+.help-info {
+	z-index: 3;
+	position: absolute;
+	margin-top: 4%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	max-width: 700px;
+	flex-wrap: wrap;
+}
+.helper-image {
+	width: 330px;
+}
+.help-item {
+	margin: 10px;
+}
