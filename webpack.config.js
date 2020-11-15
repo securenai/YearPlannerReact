@@ -39,6 +39,10 @@ module.exports = {
 				test: /\.(png|jpg)$/,
 				use: [{loader: 'url-loader'}],
 			},
+			{
+				test: /\.svg$/,
+				use: ['file-loader'],
+			},
 		],
 	},
 	resolve: {},

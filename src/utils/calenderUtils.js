@@ -38,7 +38,7 @@ class CalenderUtils {
 	}
 	getMonthNameAt(index) {
 		const monthNameList = [
-			'Janurary',
+			'January',
 			'February',
 			'March',
 			'April',

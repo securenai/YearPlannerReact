@@ -1,11 +1,21 @@
 import React from 'react';
 import MonthWidget from './MonthWidget/MonthWidget';
 import './overview.css';
+import help_svg from './help.svg';
 
 const Overview = (props) => {
 	return (
 		<div className="overview-container">
-			<div className="overview-header">{`Year ${props.selectedYear}`}</div>
+			<div className="overview-header">
+				<div className="overview-year-title">{`Year ${props.selectedYear}`}</div>
+				<div className="help-btn">
+					<img
+						className="help-svg"
+						src={help_svg}
+						onClick={props.toggleHelp}
+					/>
+				</div>
+			</div>
 			{/* <div>
 				<select
 					className="overview-select-year"

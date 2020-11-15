@@ -1,7 +1,8 @@
-import React, {useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import CalenderUtils from '../../utils/CalenderUtils';
 import Overview from '../Overview/Overview';
 import Planner from '../Planner/Planner';
+import AppHelper from './AppHelper/AppHelper';
 
 import {connect} from 'react-redux';
 import {createDayPlanner, updateDayPlanner} from '../../actions';
@@ -27,6 +28,8 @@ const MainPage = ({
 	onUpdateDestination,
 	destination,
 }) => {
+	/*****************************************  State *****************************************/
+	const [helperToggle, setHelperToggle] = useState(false);
 	/*****************************************  Constants *****************************************/
 	const cu = new CalenderUtils();
 	// get the 12 months from calendar utility class
@@ -111,6 +114,10 @@ const MainPage = ({
 		onMounted([data]);
 	};
 
+	const handleHelpToggle = () => {
+		setHelperToggle(!helperToggle);
+	};
+
 	useEffect(() => {
 		onMountDestination(0);
 		onMountYear(new Date().getFullYear());
@@ -135,15 +142,23 @@ const MainPage = ({
 	switch (destination) {
 		case 0:
 			return (
-				<Overview
-					selectedYear={selectedYear}
-					months={months}
-					monthData={monthData}
-					navToMonthFromOverview={handleNavToMonth}
-					navToDayFromOverview={handleNavToDay}
-					resetAllData={handleResetAllData}
-					// changeYear={handleChangeYear}
-				/>
+				<div>
+					<div className="overview-helper">
+						{helperToggle === true ? (
+							<AppHelper toggleHelp={handleHelpToggle} />
+						) : null}
+					</div>
+					<Overview
+						selectedYear={selectedYear}
+						months={months}
+						monthData={monthData}
+						navToMonthFromOverview={handleNavToMonth}
+						navToDayFromOverview={handleNavToDay}
+						resetAllData={handleResetAllData}
+						toggleHelp={handleHelpToggle}
+						// changeYear={handleChangeYear}
+					/>
+				</div>
 			);
 		case 1:
 			return (
