@@ -1,7 +1,7 @@
 import React from 'react';
 import MonthWidget from './MonthWidget/MonthWidget';
 import './overview.css';
-import help_svg from '../../images/help.svg';
+import help_icon from '../../images/help.png';
 
 const Overview = (props) => {
 	return (
@@ -10,8 +10,8 @@ const Overview = (props) => {
 				<div className="overview-year-title">{`Year ${props.selectedYear}`}</div>
 				<div className="help-btn">
 					<img
-						className="help-svg"
-						src={help_svg}
+						className="help-icon"
+						src={help_icon}
 						onClick={props.toggleHelp}
 					/>
 				</div>
