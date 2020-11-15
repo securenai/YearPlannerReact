@@ -1,7 +1,7 @@
 import React from 'react';
 import MonthWidget from './MonthWidget/MonthWidget';
 import './overview.css';
-import help_svg from './help.svg';
+import help_svg from '../../images/help.svg';
 
 const Overview = (props) => {
 	return (
